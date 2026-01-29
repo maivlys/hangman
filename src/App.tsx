@@ -3,6 +3,8 @@ import { WordToGuess } from "./WordToGuess";
 import { Keyboard } from "./Keyboard";
 import "./App.css";
 import { use, useEffect, useState } from "react";
+import { useContext } from "react";
+import { GlobalContext } from "./context/GlobalContext";
 
 function App() {
   // function getWord() {
@@ -22,6 +24,8 @@ function App() {
   // useEffect(() => {
   //   setGuessedLetters([]);
   // }, []);
+
+  const { isGameOverAndLost, isGameOverAndWon } = useContext(GlobalContext);
 
   return (
     <>
@@ -45,7 +49,13 @@ function App() {
             textAlign: "center",
           }}
         >
-          <p style={{ marginTop: "100px", fontSize: "2rem" }}>Let's play</p>
+          <p style={{ marginTop: "100px", fontSize: "2rem" }}>
+            {isGameOverAndLost
+              ? "Game over"
+              : isGameOverAndWon
+                ? "You played well"
+                : "Let’s play"}
+          </p>
           <Hangman
           // guessedLetters={guessedLetters}
           // wordToGuess={wordToGuess}
@@ -60,6 +70,16 @@ function App() {
           // guessedLetters={guessedLetters}
           // addGuessedLetter={addGuessedLetter}
           />
+          <button
+            style={{
+              marginTop: "2rem",
+              visibility:
+                isGameOverAndLost || isGameOverAndWon ? "visible" : "hidden",
+            }}
+            onClick={() => window.location.reload()}
+          >
+            🗘
+          </button>
         </div>
       </div>
     </>

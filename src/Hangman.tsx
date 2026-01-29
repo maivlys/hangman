@@ -110,8 +110,7 @@ const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG, FACE];
 // };
 
 export function Hangman() {
-  const { guessedLetters, wordToGuess, badGuessesArr } =
-    useContext(GlobalContext);
+  const { badGuessesArr } = useContext(GlobalContext);
 
   return (
     <>

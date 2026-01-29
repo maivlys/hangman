@@ -60,11 +60,13 @@ export function GlobalState({ children }: GameProviderProps) {
   useEffect(() => {
     setGuessedLetters([]);
   }, []);
+
   return (
     <GlobalContext.Provider
       value={{
         wordToGuess,
         guessedLetters,
+        setGuessedLetters,
         addGuessedLetter,
         badGuessesArr,
         isGameOverAndLost,
