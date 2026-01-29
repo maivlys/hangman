@@ -1,0 +1,26 @@
+
+button{
+  background-color: rgba(0, 0, 0, 0.323);
+  border: 1px solid whitesmoke;
+  width: 50px;
+  aspect-ratio: 1/1;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: rgba(0, 0, 0, 0.95);
+
+}
+
+button.active:disabled{
+ background-color: rgba(30, 73, 227, 0.411);
+ cursor: default;
+}
+
+button.inactive:disabled{
+  background-color: rgb(29, 29, 29);
+  color: rgb(59, 59, 59);
+  cursor: default;
+}
