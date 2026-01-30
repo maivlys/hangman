@@ -1,17 +1,10 @@
 import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
 
-// type WordToGuessProps = {
-//   wordToGuess: string;
-// };
-
 export function WordToGuess() {
   const { guessedLetters, wordToGuess, isGameOverAndWon, isGameOverAndLost } =
     useContext(GlobalContext);
   const wordToGuessArr: string[] = wordToGuess.split("");
-  // console.log(wordToGuessArr);
-
-  const gameOver = isGameOverAndWon || isGameOverAndLost;
 
   return (
     <>

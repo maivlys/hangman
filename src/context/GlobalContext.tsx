@@ -1,15 +1,9 @@
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  useState,
-  useEffect,
-} from "react";
+import { createContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
+
 import words from "../word-list.json";
 
 export const GlobalContext = createContext<any>(null);
-
-// export const useGlobalContext = () => useContext(GlobalContext);
 
 type GameProviderProps = {
   children: ReactNode;
@@ -18,9 +12,8 @@ type GameProviderProps = {
 export function GlobalState({ children }: GameProviderProps) {
   function getWord() {
     setWordToGuess(words[Math.floor(Math.random() * words.length)]);
-    // return words[Math.floor(Math.random() * words.length)];
   }
-  // const [wordToGuess, setWordToGuess] = useState<string>(getWord);
+
   const [wordToGuess, setWordToGuess] = useState<string>(
     words[Math.floor(Math.random() * words.length)],
   );
@@ -38,28 +31,9 @@ export function GlobalState({ children }: GameProviderProps) {
     .split("")
     .every((letter) => guessedLetters.includes(letter));
 
-  // -----
-
-  function gameOver() {
-    if (isGameOverAndLost) {
-      console.log("lost");
-    }
-    if (isGameOverAndWon) {
-      console.log("won");
-    }
-  }
-
-  gameOver();
-
-  // -----
-
   function addGuessedLetter(letter: string) {
     setGuessedLetters((current) => [...current, letter]);
   }
-
-  useEffect(() => {
-    console.log(guessedLetters);
-  }, [guessedLetters]);
 
   useEffect(() => {
     setGuessedLetters([]);

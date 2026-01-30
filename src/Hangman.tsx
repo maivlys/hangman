@@ -104,11 +104,6 @@ const FACE = (
 );
 const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG, FACE];
 
-// type HangmanProps = {
-//   guessedLetters: string[];
-//   wordToGuess: string;
-// };
-
 export function Hangman() {
   const { badGuessesArr } = useContext(GlobalContext);
 

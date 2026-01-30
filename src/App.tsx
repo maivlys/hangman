@@ -2,29 +2,11 @@ import { Hangman } from "./Hangman";
 import { WordToGuess } from "./WordToGuess";
 import { Keyboard } from "./Keyboard";
 import "./App.css";
-import { use, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
 
 function App() {
-  // function getWord() {
-  //   return words[Math.floor(Math.random() * words.length)];
-  // }
-  // const [wordToGuess, setWordToGuess] = useState<string>(getWord);
-  // const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-
-  // function addGuessedLetter(letter: string) {
-  //   setGuessedLetters((current) => [...current, letter]);
-  // }
-
-  // useEffect(() => {
-  //   console.log(guessedLetters);
-  // }, [guessedLetters]);
-
-  // useEffect(() => {
-  //   setGuessedLetters([]);
-  // }, []);
-
   const {
     isGameOverAndLost,
     isGameOverAndWon,
@@ -96,20 +78,11 @@ function App() {
                 ? "🎉 Well played! 🎉"
                 : "Let’s play"}
           </p>
-          <Hangman
-          // guessedLetters={guessedLetters}
-          // wordToGuess={wordToGuess}
-          />
-          <WordToGuess
-          // wordToGuess={wordToGuess}
-          />
+          <Hangman />
+          <WordToGuess />
         </div>
         <div style={{ alignSelf: "stretch" }}>
-          <Keyboard
-          // wordToGuess={wordToGuess}
-          // guessedLetters={guessedLetters}
-          // addGuessedLetter={addGuessedLetter}
-          />
+          <Keyboard />
           <button
             style={{
               marginTop: "2rem",

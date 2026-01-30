@@ -31,42 +31,27 @@ const KEYS = [
   "z",
 ];
 
-// type KeyboardProps = {
-//   wordToGuess: string;
-//   addGuessedLetter: (letter: string) => void;
-//   guessedLetters: string[];
-// };
-
 export function Keyboard() {
-  //   {
-  //   wordToGuess,
-  //   addGuessedLetter,
-  //   guessedLetters,
-  // }: KeyboardProps
   const {
     guessedLetters,
     wordToGuess,
     addGuessedLetter,
-    badGuessesArr,
     isGameOverAndLost,
     isGameOverAndWon,
   } = useContext(GlobalContext);
 
-  // const gameOver = badGuessesArr.length >= 7;
   const gameOver = isGameOverAndLost || isGameOverAndWon;
 
   return (
     <div
       style={{
         display: "flex",
-        // gridTemplateColumns: " repeat(auto-fill, minmax(50px, 1fr))",
         gap: ".5rem",
         flexWrap: "wrap",
         justifyContent: "center",
       }}
     >
       {KEYS.map((key) => {
-        // const gameOver = isGameOverAndLost || isGameOverAndWon;
         const isCorrectlyGuessed =
           guessedLetters.includes(key) && wordToGuess.split("").includes(key);
         const isIncorrectlyGuessed =
@@ -92,6 +77,3 @@ export function Keyboard() {
     </div>
   );
 }
-
-// ${isIncluded ? styles.active : ""}
-//             ${isNotIncluded ? styles.inactive : ""}
