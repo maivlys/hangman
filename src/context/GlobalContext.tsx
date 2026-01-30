@@ -17,9 +17,13 @@ type GameProviderProps = {
 
 export function GlobalState({ children }: GameProviderProps) {
   function getWord() {
-    return words[Math.floor(Math.random() * words.length)];
+    setWordToGuess(words[Math.floor(Math.random() * words.length)]);
+    // return words[Math.floor(Math.random() * words.length)];
   }
-  const [wordToGuess, setWordToGuess] = useState<string>(getWord);
+  // const [wordToGuess, setWordToGuess] = useState<string>(getWord);
+  const [wordToGuess, setWordToGuess] = useState<string>(
+    words[Math.floor(Math.random() * words.length)],
+  );
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   const badGuessesArr = guessedLetters.filter((item) => {
@@ -59,6 +63,7 @@ export function GlobalState({ children }: GameProviderProps) {
 
   useEffect(() => {
     setGuessedLetters([]);
+    getWord();
   }, []);
 
   return (
@@ -71,6 +76,8 @@ export function GlobalState({ children }: GameProviderProps) {
         badGuessesArr,
         isGameOverAndLost,
         isGameOverAndWon,
+        setWordToGuess,
+        getWord,
       }}
     >
       {children}

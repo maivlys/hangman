@@ -25,7 +25,30 @@ function App() {
   //   setGuessedLetters([]);
   // }, []);
 
-  const { isGameOverAndLost, isGameOverAndWon } = useContext(GlobalContext);
+  const {
+    isGameOverAndLost,
+    isGameOverAndWon,
+    setGuessedLetters,
+    setWordToGuess,
+    getWord,
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const key = e.key;
+      if (key !== "Enter") return;
+
+      e.preventDefault();
+      setGuessedLetters([]);
+      getWord();
+    };
+
+    document.addEventListener("keypress", handler);
+
+    return () => {
+      document.removeEventListener("keypress", handler);
+    };
+  }, []);
 
   return (
     <>
