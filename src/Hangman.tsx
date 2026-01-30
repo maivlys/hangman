@@ -96,7 +96,7 @@ const FACE = (
     }}
   >
     <img
-      src="../public/face.svg"
+      src="/face.svg"
       alt="hangman-eyes"
       style={{ width: "100%", height: "100%", objectFit: "cover" }}
     />
