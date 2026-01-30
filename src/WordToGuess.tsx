@@ -6,9 +6,12 @@ import { GlobalContext } from "./context/GlobalContext";
 // };
 
 export function WordToGuess() {
-  const { guessedLetters, wordToGuess } = useContext(GlobalContext);
-  const wordToGuessArr = wordToGuess.split("");
+  const { guessedLetters, wordToGuess, isGameOverAndWon, isGameOverAndLost } =
+    useContext(GlobalContext);
+  const wordToGuessArr: string[] = wordToGuess.split("");
   // console.log(wordToGuessArr);
+
+  const gameOver = isGameOverAndWon || isGameOverAndLost;
 
   return (
     <>
@@ -26,10 +29,25 @@ export function WordToGuess() {
               fontSize: "2.2rem",
               borderBottom: "2px solid whitesmoke",
               width: "28px",
+              paddingBottom: "4px",
             }}
             key={i}
           >
-            {letter}
+            <p
+              style={{
+                visibility:
+                  guessedLetters.includes(letter) || isGameOverAndLost
+                    ? "visible"
+                    : "hidden",
+                color: isGameOverAndWon
+                  ? "rgba(65, 104, 245, 1)"
+                  : isGameOverAndLost
+                    ? "red"
+                    : "",
+              }}
+            >
+              {letter}
+            </p>
           </div>
         ))}
       </div>

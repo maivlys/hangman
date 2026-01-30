@@ -51,9 +51,9 @@ function App() {
         >
           <p style={{ marginTop: "100px", fontSize: "2rem" }}>
             {isGameOverAndLost
-              ? "Game over"
+              ? "Game over 💔"
               : isGameOverAndWon
-                ? "You played well"
+                ? "🎉 Well played! 🎉"
                 : "Let’s play"}
           </p>
           <Hangman
@@ -73,8 +73,6 @@ function App() {
           <button
             style={{
               marginTop: "2rem",
-              visibility:
-                isGameOverAndLost || isGameOverAndWon ? "visible" : "hidden",
             }}
             onClick={() => window.location.reload()}
           >
